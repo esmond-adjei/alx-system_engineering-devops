@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# trap command to catch sigterm signal and display i am invincible
+# indefinitely prints 'To infinity and beyond' 
+# and when a SIGTERM signal is received, prints 'I am invicible'
 
 trap "echo I am invincible!!!" SIGTERM
-while :
-do
+while true; do
 	echo "To infinity and beyond"
 	sleep 2
 done
