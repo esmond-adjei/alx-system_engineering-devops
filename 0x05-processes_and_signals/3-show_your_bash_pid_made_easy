@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# printing pid with process name for only bash
+# prints pid with process name for bash only
 
 pgrep bash -l
