@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # print process id
 
-echo $BASHPID
+echo $$
