@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# creates a pid file and outputs different message upon signal
+# shellcheck disable=SC2009
+
+Exiter()
+{
+rm -rf /var/run/myscript.pid
+exit 1
+}
+Exiter1()
+{
+echo "I hate the kill command"
+rm -rf /var/run/myscript.pid
+exit 1
+}
+echo $BASHPID > /var/run/myscript.pid
+trap Exiter1 SIGTERM
+trap "echo Y U no love me?!" SIGINT
+trap Exiter SIGQUIT
+while :
+do
+echo "To infinity and beyond"
+sleep 2
+done
