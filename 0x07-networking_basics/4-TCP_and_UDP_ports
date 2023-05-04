@@ -1,0 +1,3 @@
+#!/bin/bash
+# shows listening sockets
+netstat -tlnp

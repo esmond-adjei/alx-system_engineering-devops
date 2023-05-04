@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+# pings an IP address
+
+IP="$1"
+if [ -z $IP ]
+then
+	echo "Usage: $0 {IP_ADDRESS}"
+	exit 1
+fi
+
+ping -c 5 $IP
