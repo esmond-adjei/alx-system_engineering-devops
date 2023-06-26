@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
+# installs and starts Nginx web server
 
-# Update package lists
 sudo apt-get update
-
-# Install Nginx
 sudo apt-get install -y nginx
 
-# Create directory for Nginx server
 sudo mkdir -p /var/www/html
-
-# Create index.html file with "Hello World!" content
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
 
-# Create a separate configuration file for the server
+# separate configuration file for server
 sudo bash -c 'cat > /etc/nginx/sites-available/myserver.conf <<EOF
 server {
     listen 80 default_server;
@@ -25,6 +20,5 @@ EOF'
 # Enable the configuration file by creating a symbolic link
 sudo ln -s /etc/nginx/sites-available/myserver.conf /etc/nginx/sites-enabled/
 
-# Start Nginx and reload the configuration
 sudo service nginx start
 sudo service nginx reload
