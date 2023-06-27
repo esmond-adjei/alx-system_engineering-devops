@@ -1,18 +1,11 @@
 #!/usr/bin/env bash
-# Installs and starts Nginx web server.
-sudo apt-get update
-sudo apt-get install -y nginx
+# installs nginx and starts the web server.
 
-sudo mkdir /var/www/html
-sudo touch /var/www/html/index.html
-echo "Hello World!" | sudo tee /var/www/html/index.html
+apt-get update
+apt-get -y install nginx
 
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/mywebsite
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/mywebsite
-sudo sed -i 's|root /var/www/html;|root /var/www/html/;|g' /etc/nginx/sites-available/mywebsite
-sudo sed -i 's|index index.html index.htm;|index index.html;|g' /etc/nginx/sites-available/mywebsite
+echo "Hello World!" > /var/www/html/index.html
 
-sudo ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/
-sudo rm /etc/nginx/sites-enabled/default
-
-sudo service nginx restart
+service nginx stop
+sed -i 's/80 default_server/80/g' /etc/nginx/sites-available/default
+service nginx start
