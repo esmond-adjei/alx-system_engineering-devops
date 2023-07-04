@@ -1,22 +1,15 @@
 #!/usr/bin/env bash
-
 # Install and configure HAProxy
 
-# Update package repositories
 sudo apt-get update
 sudo apt-get upgrade -y
-
-# Install HAProxy
 sudo apt-get install -y haproxy
 
-# Enable HAProxy management via the init script
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy > /dev/null
 
-# Configure HAProxy
 sudo mv /etc/haproxy/haproxy.cfg{,.original}
 sudo touch /etc/haproxy/haproxy.cfg
 
-# HAProxy configuration
 printf "%s\n" "global
     log 127.0.0.1 local0 notice
     maxconn 2000
@@ -42,6 +35,6 @@ listen hbnb
     balance roundrobin
     option httpclose
     option forwardfor
-    server [STUDENT_ID]-web-01 100.26.221.176 check
-    server [STUDENT_ID]-web-02 100.25.168.7   check
+    server 190940-web-01 100.26.221.176 check
+    server 190940-web-02 100.25.168.7   check
 " | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
