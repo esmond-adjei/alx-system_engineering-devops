@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script to configure server to listen on port 90
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
