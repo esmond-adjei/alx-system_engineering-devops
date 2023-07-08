@@ -2,5 +2,4 @@
 # A shorter fix for 0-nginx_likes_port_80
 
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx start
-sudo kill "$(pgrep 'nginx' | head -1)"
+sudo service nginx restart
