@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Configure ufw to block all incoming traffic except
-# SSH (22), HTTPS (443), and HTTP (80)
+# Configure ufw to block all incoming traffic except:
+# 22 (SSH), 443 (HTTPS SSL), 80 (HTTP)
 sudo apt-get -y update
 sudo apt-get -y install ufw
 sudo ufw default allow outgoing
