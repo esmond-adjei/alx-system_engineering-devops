@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# shorter fix for task #1
+
+sudo -u "$1" whoami
