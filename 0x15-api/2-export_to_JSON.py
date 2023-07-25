@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Exports to-do list information to JSON format."""
-import requests
 import json
+import requests
 import sys
 
 
