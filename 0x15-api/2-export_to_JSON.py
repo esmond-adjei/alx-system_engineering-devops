@@ -14,11 +14,11 @@ def export_to_json(employee_id):
         user_data = requests.get(user_url).json()
         username = user_data.get('username')
         todo_data = requests.get(todo_url).json()
-        tasks = [tasks.append({
+        tasks = [{
             "task": task.get('title'),
             "completed": task.get('completed'),
             "username": username
-        }) for task in todo_data]
+        } for task in todo_data]
 
         data = {str(employee_id): tasks}
 
