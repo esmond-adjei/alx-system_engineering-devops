@@ -11,22 +11,17 @@ def export_to_csv(employee_id):
     todo_url = f"{base_url}/todos?userId={employee_id}"
 
     try:
-        user_response = requests.get(user_url)
-        user_response.raise_for_status()
-        user_data = user_response.json()
-        name = user_data.get('name')
+        user_data = requests.get(user_url).json()
+        name = user_data.get('username')
 
-        todo_response = requests.get(todo_url)
-        todo_response.raise_for_status()
-        todo_data = todo_response.json()
-
+        todo_data = requests.get(todo_url).json()
         filename = f"{employee_id}.csv"
 
         with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
             [writer.writerow(
                 [employee_id, name, task.get("completed"), task.get("title")])
-             for task in file]
+             for task in todo_data]
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         sys.exit(1)
