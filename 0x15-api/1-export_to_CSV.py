@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Exports to-do list information for a given employee ID to CSV format."""
+"""Exports to-do list information to CSV format."""
 import csv
 import requests
 import sys
@@ -23,11 +23,10 @@ def export_to_csv(employee_id):
         filename = f"{employee_id}.csv"
 
         with open(filename, mode='w', newline='') as file:
-            writer = csv.writer(file)
-            for task in todo_data:
-                completed = "True" if task['completed'] else "False"
-                writer.writerow([employee_id, name, completed, task['title']])
-
+            writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+            [writer.writerow(
+                [employee_id, name, task.get("completed"), task.get("title")])
+             for task in file]
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         sys.exit(1)
