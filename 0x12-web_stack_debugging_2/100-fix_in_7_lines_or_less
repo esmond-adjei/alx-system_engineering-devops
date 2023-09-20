@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # shorter fix for task #1
-[ -z "$1" ] && echo "Usage: ./script.sh <username>" || sudo -u "$1" whoami
+
+sudo -u "$1" whoami
