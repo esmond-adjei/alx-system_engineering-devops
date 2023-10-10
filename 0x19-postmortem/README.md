@@ -1,5 +1,7 @@
 # 0x19-postmortem
 
+![](https://i.gifer.com/77by.gif)
+
 ## Postmortem: Outage of HnH Web Service
 ## Issue Summary:
 ### Duration:
