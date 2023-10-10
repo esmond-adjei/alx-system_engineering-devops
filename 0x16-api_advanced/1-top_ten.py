@@ -20,4 +20,4 @@ def top_ten(subreddit):
         [print(child.get("data").get("title"))
             for child in response.json().get("data").get("children")]
     else:
-        return
+        print(None)
