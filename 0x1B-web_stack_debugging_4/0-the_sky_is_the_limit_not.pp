@@ -1,10 +1,12 @@
+# fix stack
+
 exec { 'fix':
-  path    => ['/bin/'],
-  command => 'sed -i "s/-n 15/-n 1000/" /etc/default/nginx',
-  notify  => Service['nginx']
+  command => 'sed -i "s/15/4096/" /etc/default/nginx',
+  path    => '/usr/local/bin/:/bin'
 }
 
-service { 'nginx':
-  ensure => running,
-  enable => true
+# restarting nginx server
+exec { 'nginx-restart':
+  command => 'nginx restart',
+  path    => '/etc/init.d/'
 }
