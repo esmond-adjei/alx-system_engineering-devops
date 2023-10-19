@@ -1,10 +1,10 @@
 # Increase the ULIMIT of the default file
-exec { 'fix--for-nginx':
-  command => 'sed -i "s/15/1000/" /etc/default/nginx',
-  path    => '/usr/local/bin/:/bin/'
-} ->
+exec { 'fix':
+  path    => ['/bin/'],
+  command => 'sed -i "s/-n 15/-n 1000/" /etc/default/nginx',
+}
 
-exec { 'nginx-restart':
-  command => 'nginx restart',
-  path    => '/etc/init.d/'
+service { 'nginx':
+  ensure => running,
+  enable => true
 }
