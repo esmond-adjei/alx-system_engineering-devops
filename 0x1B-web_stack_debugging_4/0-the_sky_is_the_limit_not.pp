@@ -1,11 +1,2 @@
-# Increase the ULIMIT of the default file
-exec { 'fix':
-  path    => ['/bin/'],
-  command => 'sed -i "s/-n 15/-n 1000/" /etc/default/nginx',
-  notify => Service['nginx']
-}
-
-service { 'nginx':
-  ensure => running,
-  enable => true
-}
+exec { '/usr/bin/env sed -i s/15/1000/ /etc/default/nginx': }
+-> exec { '/usr/bin/env service nginx restart': }
